@@ -13,8 +13,13 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "activerecord-mysql2legacydb-adapter"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.name = "activerecord-mysql2legacydb-adapter"
+  gem.summary = %Q{Translates table and field names of legacy databases}
+  gem.description = %Q{If you are stuck with a MySQL database where the naming is, well, unrailslike,
+    activerecord-mysql2-legacy-db-adapter offers a way to do the translation. It works at the driver level and doesn't
+    require you ro change the structure of the database. Also there are no database views which should be kept up to date
+    as you add or remove fields.
+  }
   gem.email = "anders@johannsen.com"
   gem.homepage = "http://github.com/andersjo/activerecord-mysql2legacydb-adapter"
   gem.authors = ["Anders Johannsen"]
@@ -22,6 +27,7 @@ Jeweler::Tasks.new do |gem|
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  spec.add_runtime_dependency 'jabber4r', '> 0.1'
   #  spec.add_development_dependency 'rspec', '> 1.2.3'
+  gem.add_runtime_dependency "mysql2", ">= 0.2.4"
   gem.add_development_dependency "rspec", ">= 2.0.0.beta.19"
   gem.add_development_dependency "bundler", "~> 1.0.0"
   gem.add_development_dependency "jeweler", "~> 1.5.0.pre3"
