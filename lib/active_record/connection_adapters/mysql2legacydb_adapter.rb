@@ -19,13 +19,7 @@ module ActiveRecord
 
   module ConnectionAdapters
     class Mysql2LegacyDBAdapter < Mysql2Adapter
-      def legacy_to_new(legacy_name)
-        legacy_name.underscore
-      end
-      
-      def new_to_legacy(new_name)
-        new_name.to_s.camelize(:lower)
-      end
+      delegate :legacy_to_new, :new_to_legacy, :to => :"Mysql2legacydb::DefaultTranslator.new"
 
       def columns(table_name, name = nil)
         sql = "SHOW FIELDS FROM #{quote_table_name(table_name)}"

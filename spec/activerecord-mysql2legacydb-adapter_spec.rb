@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 
 describe ActiveRecord::Base do
-  context "normal connection" do
+  context "'mysql2' adapter" do
     before do
       ActiveRecord::Base.establish_connection(TEST_CONFIG.merge({:adapter => 'mysql2'}))
     end
@@ -13,7 +13,7 @@ describe ActiveRecord::Base do
     end
   end
 
-  context "legacy connection" do
+  context "'mysql2legacydb' adapter" do
     before do
       ActiveRecord::Base.establish_connection(TEST_CONFIG.merge({:adapter => 'mysql2legacydb'}))
     end
@@ -45,6 +45,7 @@ describe "ActiveRecord::ConnectionAdapters::Mysql2LegacyDBAdapter" do
     end
 
     it "should have altered table names" do
+      River.table_name.should == "rivers"
       VeryLongRiver.table_name.should == "very_long_rivers"
     end
 
